@@ -32,3 +32,9 @@ add "key.js" to .gitignore
 modify "auth-routes.js" for "/google" service
 import "passport-setup" to app.js
 
+=============================
+branch lesson03: passport callback function
+Till now we can login using Google. Next we need to get user's profile and email
+modify "auth-routes.js" for "/google/redirect" service
+modify "passport-setup.js" for callback
+Observe that you can show user's info but the redirect does not happen

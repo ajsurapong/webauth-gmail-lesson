@@ -9,7 +9,7 @@ router.get("/login", (req, res) => {
 //authenticate with google using passport middleware
 router.get("/google", passport.authenticate("google", {scope: ["profile", "email"]}));
 
-router.get("/google/redirect", (req, res) => {
+router.get("/google/redirect", passport.authenticate("google"), (req, res) => {
     res.send("You have logged in and are redirected here");
 });
 
