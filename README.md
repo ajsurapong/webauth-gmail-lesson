@@ -23,3 +23,12 @@ branch master: Installation and preparation
 branch lesson01: auth routes and login page
 create folder "routes" and file "auth-routes.js"
 add file "login.ejs" to folder "views"
+
+=============================
+branch lesson02: passport setup
+create folder "config" and file "passport-setup.js"
+creat "key.js" in "config" to add client_id and client_secret
+add "key.js" to .gitignore
+modify "auth-routes.js" for "/google" service
+import "passport-setup" to app.js
+

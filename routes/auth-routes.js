@@ -7,8 +7,10 @@ router.get("/login", (req, res) => {
 });
 
 //authenticate with google using passport middleware
-router.get("/google", (req, res) => {
-    res.send("Loggin in by Google");
+router.get("/google", passport.authenticate("google", {scope: ["profile", "email"]}));
+
+router.get("/google/redirect", (req, res) => {
+    res.send("You have logged in and are redirected here");
 });
 
 module.exports = router;
