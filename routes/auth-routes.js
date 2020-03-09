@@ -9,8 +9,9 @@ router.get("/login", (req, res) => {
 //authenticate with google using passport middleware
 router.get("/google", passport.authenticate("google", {scope: ["profile", "email"]}));
 
+//redirect function after login with passport is successful
 router.get("/google/redirect", passport.authenticate("google"), (req, res) => {
-    res.send("You have logged in and are redirected here");
+    res.send(req.user);
 });
 
 module.exports = router;

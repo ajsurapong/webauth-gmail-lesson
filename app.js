@@ -1,6 +1,9 @@
 const express = require("express");
 const authRoutes = require("./routes/auth-routes");
+const passport = require("passport");
 const passportSetup = require("./config/passport-setup");
+const cookieSession = require("cookie-session");
+const key = require("./config/key");
 
 const app = express();
 
@@ -11,6 +14,17 @@ app.set("view engine", "ejs");
 // app.set('views', path.join(__dirname, 'web'));
 
 //=========== middleware ==============
+//cookie
+app.use(cookieSession({
+    //1 hour
+    maxAge: 60*60*1000,
+    //secrete key to encrypt cookie
+    keys: [key.session.cookieKey]
+}));
+//passport intiailization
+app.use(passport.initialize());
+//passport session
+app.use(passport.session());
 //authentication
 app.use("/auth", authRoutes);
 

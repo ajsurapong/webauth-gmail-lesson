@@ -38,3 +38,12 @@ Till now we can login using Google. Next we need to get user's profile and email
 modify "auth-routes.js" for "/google/redirect" service
 modify "passport-setup.js" for callback
 Observe that you can show user's info but the redirect does not happen
+
+=============================
+branch lesson04: serializing user and cookie
+If we need user info after loggin in for any webpages, we need to serialize and deserialize it
+modify "passport-setup.js" for serialize and deserialize
+modify "app.js" to import "cookie-session" and config cookie middleware
+add cookie secret key to "key.js"
+add middleware "passport.initialize" and "passport.session" to "app.js"
+modify "auth-routes.js" for "/google/redirect" service to show "req.user" which is globally accessed via cookie and session
