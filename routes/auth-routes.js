@@ -11,7 +11,7 @@ router.get("/google", passport.authenticate("google", {scope: ["profile", "email
 
 //redirect function after login with passport is successful
 router.get("/google/redirect", passport.authenticate("google"), (req, res) => {
-    res.send(req.user);
+    res.redirect("/profile");
 });
 
 module.exports = router;

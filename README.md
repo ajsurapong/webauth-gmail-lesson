@@ -47,3 +47,12 @@ modify "app.js" to import "cookie-session" and config cookie middleware
 add cookie secret key to "key.js"
 add middleware "passport.initialize" and "passport.session" to "app.js"
 modify "auth-routes.js" for "/google/redirect" service to show "req.user" which is globally accessed via cookie and session
+
+=============================
+branch lesson05: profile page and prevent non-login user
+create "profile.ejs" in "views"
+create "profile-routes.js" in "routes" to render "profile.ejs"
+add middleware "/profile" to "app.js"
+add middleware to protect "/profile" in "profile-routes.js"
+modify "auth-routes.js" for "/google/redirect" to redirect to "/profile"
+try to sign user out or user private window and jump directly to "http://localhost:3000/profile"
