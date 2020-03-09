@@ -18,3 +18,8 @@ branch master: Installation and preparation
 -set "Authorized JavaScript origins" to http://localhost:3000 
 -set "Authorized redirect URIs" to http://localhost:3000/auth/google/redirect
 -note "client_id" and "client_secret"
+
+=============================
+branch lesson01: auth routes and login page
+create folder "routes" and file "auth-routes.js"
+add file "login.ejs" to folder "views"

@@ -1,4 +1,5 @@
 const express = require("express");
+const authRoutes = require("./routes/auth-routes");
 
 const app = express();
 
@@ -7,6 +8,10 @@ app.set("view engine", "ejs");
 //the default directory for view engine is "views"
 //so if the directory is "./web"
 // app.set('views', path.join(__dirname, 'web'));
+
+//=========== middleware ==============
+//authentication
+app.use("/auth", authRoutes);
 
 //=========== routes ==============
 //root route
