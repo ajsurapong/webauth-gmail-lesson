@@ -56,3 +56,10 @@ add middleware "/profile" to "app.js"
 add middleware to protect "/profile" in "profile-routes.js"
 modify "auth-routes.js" for "/google/redirect" to redirect to "/profile"
 try to sign user out or user private window and jump directly to "http://localhost:3000/profile"
+
+=============================
+branch lesson06: logout
+add "/logout" to "auth-routes.js"
+add "logout" menu to every webpages
+use ejs "if" to show login or logout menu properly
+modify "/" in "app.js" and "/login" in "auth-routes.js" to send "req.user" to ejs

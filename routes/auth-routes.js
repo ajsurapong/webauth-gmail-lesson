@@ -3,7 +3,18 @@ const passport = require("passport");
 
 //go to login page
 router.get("/login", (req, res) => {
-    res.render("login");
+    //if user already logged in
+    if(req.user) {
+        res.redirect("/");
+    }
+    //if not yet log in
+    res.render("login", {user: req.user});
+});
+
+//logout
+router.get("/logout", (req, res) => {
+    req.logOut();
+    res.redirect("/");
 });
 
 //authenticate with google using passport middleware

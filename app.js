@@ -34,7 +34,7 @@ app.use("/profile", profileRoutes);
 //=========== routes ==============
 //root route
 app.get("/", (req, res) => {
-    res.render("home");
+    res.render("home", {user: req.user});
 })
 
 //start server
