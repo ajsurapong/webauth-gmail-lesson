@@ -4,24 +4,28 @@ const passport = require("passport");
 //go to login page
 router.get("/login", (req, res) => {
     //if user already logged in
-    if(req.user) {
+    if (req.user) {
         res.redirect("/");
     }
     //if not yet log in
-    res.render("login", {user: req.user});
+    res.render("login", { user: req.user });
 });
 
 //logout
 router.get("/logout", (req, res) => {
     req.logOut();
+    req.session = null;
     res.redirect("/");
 });
 
 //authenticate with google using passport middleware
-router.get("/google", passport.authenticate("google", {scope: ["profile", "email"]}));
+router.get("/google", passport.authenticate(
+    "google",
+    { scope: ["profile", "email"], prompt: "select_account" }
+));
 
 //redirect function after login with passport is successful
-router.get("/google/redirect", passport.authenticate("google"), (req, res) => {
+router.get("/google/redirect", passport.authenticate("google", { failureRedirect: '/auth/login' }), (req, res) => {
     res.redirect("/profile");
 });
 

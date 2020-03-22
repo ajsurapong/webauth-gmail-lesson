@@ -63,3 +63,10 @@
 * add "logout" menu to every webpages
 * use ejs "if" to show login or logout menu properly
 * modify "/" in "app.js" and "/login" in "auth-routes.js" to send "req.user" to ejs
+
+=============================
+### branch lesson07: always force Google account selection, non-user redirect and logout with clearing session
+* modify "/google" in "auth-routes.js" to have an extra option -> prompt: "select_account". This will always force user to choose account for log in
+* modify "/logout" to clear session by "req.session = null;"
+* modify "passport-setup.js" for non-member, also add "done(null, false)" for failure redirect
+* modify "/google/redirect" in "auth-routes.js" to have an extra option "failureRedirect" which is called from "done(null, false)"

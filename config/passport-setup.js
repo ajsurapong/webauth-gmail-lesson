@@ -23,10 +23,17 @@ passport.use(
         callbackURL: "/auth/google/redirect"
     }, (accessToken, refreshToken, profile, done) => {
         // console.log(profile);
-        //create data for serializing, assume that we need email and photo
-        const user = {"email": profile.emails[0].value, "photo": profile.photos[0].value};
-        //serialize
-        done(null, user);
+        // TODO: check if email exists in database
+        if(profile.emails[0].value != "surapong@mfu.ac.th") {            
+            done(null, false);
+            // this will call "failureRedirect" option in redirect callback above
+        }
+        else {
+            //create data for serializing, assume that we need email and photo
+            const user = { "email": profile.emails[0].value, "photo": profile.photos[0].value };
+            //serialize
+            done(null, user);
         //after this, it will call the callbackURL above
+        }        
     })
 );
